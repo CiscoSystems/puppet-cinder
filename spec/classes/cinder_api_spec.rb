@@ -22,7 +22,7 @@ describe 'cinder::api' do
       should contain_cinder_config('DEFAULT/auth_strategy').with(
        :value => 'keystone'
       )
-      should contain_cinder_config('DEFAULT/bind_host').with(
+      should contain_cinder_config('DEFAULT/osapi_volume_listen').with(
        :value => '0.0.0.0'
       )
       should contain_cinder_api_paste_ini('filter:authtoken/service_protocol').with(
@@ -50,7 +50,8 @@ describe 'cinder::api' do
         :value => 'cinder'
       )
       should contain_cinder_api_paste_ini('filter:authtoken/admin_password').with(
-        :value => 'foo'
+        :value  => 'foo',
+        :secret => true
       )
     end
   end
@@ -60,7 +61,7 @@ describe 'cinder::api' do
       req_params.merge({'bind_host' => '192.168.1.3'})
     end
     it 'should configure cinder api correctly' do
-      should contain_cinder_config('DEFAULT/bind_host').with(
+      should contain_cinder_config('DEFAULT/osapi_volume_listen').with(
        :value => '192.168.1.3'
       )
     end
