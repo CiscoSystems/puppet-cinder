@@ -17,6 +17,7 @@ class cinder::params {
     $tgt_package_name   = 'tgt'
     $tgt_service_name   = 'tgt'
     $ceph_init_override = '/etc/init/cinder-volume.override'
+    file { $ceph_init_override: ensure => present }
 
   } elsif($::osfamily == 'RedHat') {
 
@@ -32,6 +33,7 @@ class cinder::params {
     $tgt_package_name   = 'scsi-target-utils'
     $tgt_service_name   = 'tgtd'
     $ceph_init_override = '/etc/sysconfig/openstack-cinder-volume'
+    file { $ceph_init_override: ensure => present }
 
   } else {
     fail("unsuported osfamily ${::osfamily}, currently Debian and Redhat are the only supported platforms")
