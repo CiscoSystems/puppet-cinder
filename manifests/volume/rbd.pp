@@ -42,9 +42,11 @@ class cinder::volume::rbd (
 
   case $::osfamily {
     'Debian': {
+      file { $ceph_init_override: ensure => present } 
       $override_line    = "env CEPH_ARGS=\"--id ${rbd_user}\""
     }
     'RedHat': {
+      file { $ceph_init_override: ensure => present } 
       $override_line    = "export CEPH_ARGS=\"--id ${rbd_user}\""
     }
     default: {
