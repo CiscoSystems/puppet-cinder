@@ -40,8 +40,6 @@ class cinder::volume::rbd (
     }
   }
 
-  file { $ceph_init_override: ensure => present } 
-
   case $::osfamily {
     'Debian': {
       file { $ceph_init_override: ensure => present } 
