@@ -42,11 +42,11 @@ class cinder::volume::rbd (
 
   case $::osfamily {
     'Debian': {
-      $override_line    = "env CEPH_ARGS=\"--id ${rbd_user}\""
+      $override_line = "env CEPH_ARGS=\"--id ${rbd_user}\""
       file { '/etc/init/cinder-volume.override': ensure => present }
     }
     'RedHat': {
-      $override_line    = "export CEPH_ARGS=\"--id ${rbd_user}\""
+      $override_line = "export CEPH_ARGS=\"--id ${rbd_user}\""
       file { '/etc/sysconfig/openstack-cinder-volume': ensure => present }
     }
     default: {
