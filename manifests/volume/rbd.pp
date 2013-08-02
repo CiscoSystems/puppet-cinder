@@ -42,12 +42,12 @@ class cinder::volume::rbd (
 
   case $::osfamily {
     'Debian': {
-      file { $ceph_init_override: ensure => present } 
-      $override_line    = "env CEPH_ARGS=\"--id ${rbd_user}\""
+      $override_line = "env CEPH_ARGS=\"--id ${rbd_user}\""
+      file { '/etc/init/cinder-volume.override': ensure => present }
     }
     'RedHat': {
-      file { $ceph_init_override: ensure => present } 
-      $override_line    = "export CEPH_ARGS=\"--id ${rbd_user}\""
+      $override_line = "export CEPH_ARGS=\"--id ${rbd_user}\""
+      file { '/etc/sysconfig/openstack-cinder-volume': ensure => present }
     }
     default: {
       fail("unsuported osfamily ${::osfamily}, currently Debian and Redhat are the only supported platforms")
