@@ -176,9 +176,21 @@ Contributors
 Release Notes
 -------------
 
+<<<<<<< HEAD
 **master**
 
 * Added support for multiple concurent backends.
+=======
+**3.0.0**
+
+* Major release for OpenStack Havana.
+* Added support for Solid Fire.
+* Added support for ceilometer.
+* Added Ceph backend support.
+* Added Glance support.
+* Improved Cinder backup support.
+* Fixed bug for cinder-volume requirement.
+* Fixed default Swift URL for backup service.
 
 **2.2.0**
 
