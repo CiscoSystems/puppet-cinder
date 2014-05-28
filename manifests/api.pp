@@ -75,8 +75,8 @@
 # [*default_volume_type*]
 #   (optional) default volume type to use.
 #   This should contain the name of the default volume type to use.
-#   If not configured, it produces an error when creating a volume
-#   without specifying a type.
+#   If this parameter is not set when multi-backend is enabled, then cinder will
+#   fail to create a volume.
 #   Defaults to 'false'.
 class cinder::api (
   $keystone_password,
